@@ -1,5 +1,7 @@
 # 3730-Customer-Segmentation
 Customer segmentation project for CSC 3730
+
+
 Model Comparison
 To check that the K-means segments are stable and not just a result of one algorithm, we compare them against a second clustering method.
 
