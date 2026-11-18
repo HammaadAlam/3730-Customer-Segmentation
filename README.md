@@ -1,5 +1,7 @@
 # 3730-Customer-Segmentation
 Customer segmentation project for CSC 3730
+**Group 6**
+**Hammaad Alam, Nick Jaramillo, Fahd Khattak, Damien Nguyen, Madison Nguyen, Taylor Wall, Demetri Williams**
 
 
 **Model Comparison**
