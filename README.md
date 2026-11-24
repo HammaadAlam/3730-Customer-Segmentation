@@ -10,7 +10,14 @@ Hammaad Alam, Nick Jaramillo, Fahd Khattak, Damien Nguyen, Madison Nguyen, Taylo
 
 An online retailer has a year of transactions but no labels saying which customers are valuable, at risk, or new. We build Recency, Frequency, and Monetary (RFM) features for each customer, group customers with K-means, check the result against agglomerative (hierarchical) clustering, and turn the segments into marketing recommendations.
 
-Everything is in one notebook: [`customer_segmentation.ipynb`](customer_segmentation.ipynb).
+The full analysis is in [`customer_segmentation.ipynb`](customer_segmentation.ipynb). The same analysis is also split into four shorter notebooks, one per stage:
+
+| Notebook | Contents |
+|---|---|
+| [`01_preprocessing_eda.ipynb`](01_preprocessing_eda.ipynb) | Cleaning and exploratory data analysis |
+| [`02_rfm_kmeans.ipynb`](02_rfm_kmeans.ipynb) | RFM features, choosing K, final K-means model, stability check |
+| [`03_agglomerative_comparison.ipynb`](03_agglomerative_comparison.ipynb) | Agglomerative clustering, method comparison, RFM quintile baseline |
+| [`04_segments_recommendations.ipynb`](04_segments_recommendations.ipynb) | Named segments, marketing recommendations, limitations, references |
 
 ## Dataset
 
@@ -67,7 +74,7 @@ Everything is in one notebook: [`customer_segmentation.ipynb`](customer_segmenta
 - Quintile cells are too fine to act on and barely separate customers. Four summed-score tiers are usable, but K-means separates customers more clearly.
 - The top quintile tier holds 715 of the 716 loyal high-value customers but also 407 mid-value at-risk customers, because high Frequency and Monetary scores make up for poor Recency. K-means keeps those lapsing regular buyers in their own segment.
 
-The notebook ends with the limitations of the analysis, a conclusion, and the full reference list.
+The full notebook (and `04_segments_recommendations.ipynb`) ends with the limitations of the analysis, a conclusion, and the full reference list.
 
 ## How to run
 
@@ -80,16 +87,22 @@ jupyter notebook customer_segmentation.ipynb
 
 Then choose **Kernel > Restart & Run All**. The notebook takes under a minute and writes every figure to `figures/`. Random seeds are fixed, so the results above are reproduced exactly.
 
+To use the split notebooks instead, run `01` to `04` in order. Each one saves its results to a `data/` folder that the next one loads, so a later notebook will not run before the earlier ones.
+
 Last verified with Python 3.12, numpy 2.5, pandas 3.1, scikit-learn 1.9, scipy 1.18, and matplotlib 3.11.
 
 ## Repository structure
 
 ```
-customer_segmentation.ipynb   Full analysis with outputs
-report/Group6_Report.pdf      Final project report
-Online Retail.xlsx            UCI Online Retail dataset
-figures/                      Figures saved by the notebook (for the report and slides)
-requirements.txt              Python dependencies
+customer_segmentation.ipynb         Full analysis with outputs
+01_preprocessing_eda.ipynb          Split version, stage 1: cleaning and EDA
+02_rfm_kmeans.ipynb                 Split version, stage 2: RFM features and K-means
+03_agglomerative_comparison.ipynb   Split version, stage 3: second method and baseline
+04_segments_recommendations.ipynb   Split version, stage 4: segments and recommendations
+report/Group6_Report.pdf            Final project report
+Online Retail.xlsx                  UCI Online Retail dataset
+figures/                            Figures saved by the notebooks (for the report and slides)
+requirements.txt                    Python dependencies
 README.md
 ```
 
