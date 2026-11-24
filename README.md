@@ -4,6 +4,8 @@
 
 Hammaad Alam, Nick Jaramillo, Fahd Khattak, Damien Nguyen, Madison Nguyen, Taylor Wall, Demetri Williams
 
+**Final report:** [`report/Group6_Report.pdf`](report/Group6_Report.pdf)
+
 ## Overview
 
 An online retailer has a year of transactions but no labels saying which customers are valuable, at risk, or new. We build Recency, Frequency, and Monetary (RFM) features for each customer, group customers with K-means, check the result against agglomerative (hierarchical) clustering, and turn the segments into marketing recommendations.
@@ -26,6 +28,7 @@ Everything is in one notebook: [`customer_segmentation.ipynb`](customer_segmenta
 | Final model | K-means with K = 4, with a random-seed stability check and a 2D PCA plot |
 | Second method | Agglomerative clustering (Ward linkage) on the same features and same K, with a dendrogram |
 | Comparison | Silhouette scores, Adjusted Rand Index (ARI), cluster sizes, median RFM profiles, and a crosstab |
+| Baseline | Traditional RFM quintile scoring (1-5 per feature), as cells and as four summed-score tiers, compared with both clustering methods |
 | Interpretation | Named segments, segment behaviour, and marketing recommendations with KPIs |
 
 ## Results
@@ -52,6 +55,18 @@ Everything is in one notebook: [`customer_segmentation.ipynb`](customer_segmenta
 
 ![K-means and agglomerative clusters in PCA space](figures/kmeans_vs_agglomerative_pca.png)
 
+**Baseline: traditional RFM quintile scoring**
+
+| Method | Groups | Silhouette | ARI vs K-means |
+|---|---|---|---|
+| RFM quintile cells | 118 | 0.023 | — |
+| RFM score tiers | 4 | 0.196 | 0.362 |
+| Agglomerative (Ward) | 4 | 0.242 | 0.248 |
+| K-means | 4 | **0.337** | 1.000 |
+
+- Quintile cells are too fine to act on and barely separate customers. Four summed-score tiers are usable, but K-means separates customers more clearly.
+- The top quintile tier holds 715 of the 716 loyal high-value customers but also 407 mid-value at-risk customers, because high Frequency and Monetary scores make up for poor Recency. K-means keeps those lapsing regular buyers in their own segment.
+
 The notebook ends with the limitations of the analysis, a conclusion, and the full reference list.
 
 ## How to run
@@ -71,6 +86,7 @@ Last verified with Python 3.12, numpy 2.5, pandas 3.1, scikit-learn 1.9, scipy 1
 
 ```
 customer_segmentation.ipynb   Full analysis with outputs
+report/Group6_Report.pdf      Final project report
 Online Retail.xlsx            UCI Online Retail dataset
 figures/                      Figures saved by the notebook (for the report and slides)
 requirements.txt              Python dependencies
