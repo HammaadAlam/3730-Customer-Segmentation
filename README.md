@@ -15,7 +15,7 @@ The analysis is split into four notebooks, one per stage, run in order:
 | Notebook | Contents |
 |---|---|
 | [`01_preprocessing_eda.ipynb`](01_preprocessing_eda.ipynb) | Cleaning and exploratory data analysis |
-| [`02_rfm_kmeans.ipynb`](02_rfm_kmeans.ipynb) | RFM features, choosing K, final K-means model, stability check |
+| [`02_rfm_kmeans.ipynb`](02_rfm_kmeans.ipynb) | RFM features, choosing K, final K-means model, stability check, ablation |
 | [`03_agglomerative_comparison.ipynb`](03_agglomerative_comparison.ipynb) | Agglomerative clustering, method comparison, RFM quintile baseline |
 | [`04_segments_recommendations.ipynb`](04_segments_recommendations.ipynb) | Named segments, marketing recommendations, limitations, references |
 
@@ -32,7 +32,7 @@ The analysis is split into four notebooks, one per stage, run in order:
 | Preprocessing | Drop rows with no `CustomerID`, cancellation rows, and rows with a zero or negative quantity or price: 541,909 rows become 397,884 purchases by 4,338 customers |
 | Features | Recency (days since last purchase), Frequency (distinct invoices), Monetary (total spending), then `log1p` and standardization |
 | Choosing K | K-means for K = 2 to 10, compared with the elbow method and silhouette scores; K = 4 selected |
-| Final model | K-means with K = 4, with a random-seed stability check and a 2D PCA plot |
+| Final model | K-means with K = 4, with a random-seed stability check, an ablation of the preprocessing steps and features, and a 2D PCA plot |
 | Second method | Agglomerative clustering (Ward linkage) on the same features and same K, with a dendrogram |
 | Comparison | Silhouette scores, Adjusted Rand Index (ARI), cluster sizes, median RFM profiles, and a crosstab |
 | Baseline | Traditional RFM quintile scoring (1-5 per feature), as cells and as four summed-score tiers, compared with both clustering methods |
