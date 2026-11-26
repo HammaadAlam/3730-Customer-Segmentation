@@ -99,7 +99,7 @@ Last verified with Python 3.12, numpy 2.5, pandas 3.1, scikit-learn 1.9, scipy 1
 report/Group6_Report.pdf            Final project report
 Online Retail.xlsx                  UCI Online Retail dataset
 figures/                            Figures saved by the notebooks (for the report and slides)
-data/                               Saved results each notebook passes to the next (auto-generated)
+data/                               Saved results each notebook passes to the next (created when run)
 requirements.txt                    Python dependencies
 README.md
 ```
